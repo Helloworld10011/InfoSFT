@@ -10,7 +10,7 @@
 set -euo pipefail
 
 MODEL_ID=${1:?"Specify model_id (e.g. Qwen/Qwen2.5-7B-Instruct)"}
-DATA_PATH=${2:?"Specify data_path (e.g. data/science/train_data)"}
+DATA_PATH=${2:?"Specify data_path (e.g. data/science_data/train_data or data/tooluse_data/train_data)"}
 SEED=${3:-42}
 
 AVAILABLE_GPUS=(0 1)
