@@ -39,7 +39,7 @@ The InfoSFT loss is implemented in `training/infosft_loss.py` and plugged into T
 bash training/scripts/run_numinamath.sh Qwen/Qwen2.5-Math-7B infosft 2e-5
 
 # Example: Llama-3.1-8B on UltraFeedback-Code with DFT
-bash training/scripts/run_ultrafeedback.sh meta-llama/Llama-3.1-8B dft 5e-5
+bash training/scripts/run_ultrafeedback.sh meta-llama/Llama-3.1-8B dft 2e-5
 ```
 
 > **Learning rates:** we use `5e-5` for 1.5B models and `2e-5` for 7B/8B models on math; `2e-5` with `rank=32` for all models on coder.
@@ -52,11 +52,14 @@ bash training/scripts/run_ultrafeedback.sh meta-llama/Llama-3.1-8B dft 5e-5
 | `run_science.sh` | `Science_Tooluse.py` | Sweep over LR × epochs on science QA |
 | `run_tool.sh` | `Science_Tooluse.py` | Sweep over LR × epochs on tool-use |
 
+#### OpenR1 experiment
 ```bash
-# OpenR1 experiment
 bash training/scripts/run_openR1.sh Qwen/Qwen2.5-7B-Instruct infosft 5e-6
+```
+>This includes the code for using SFT or InfoSFT only. The code must be updated for their combination that runs 1 epoch on each of them
 
-# Science / Tool-use sweeps (runs all {nll, dft, infosft} × {1, 2} epochs automatically)
+#### Science / Tool-use sweeps (runs all {nll, dft, infosft} and sweeps all hyper-paramters automatically)
+```
 bash training/scripts/run_science.sh Qwen/Qwen2.5-7B-Instruct data/science_data/train_data
 bash training/scripts/run_tool.sh    Qwen/Qwen2.5-7B-Instruct data/tooluse_data/train_data
 ```
