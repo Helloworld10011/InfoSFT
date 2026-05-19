@@ -1,0 +1,9 @@
+trl==1.1.0
+trl[vllm]
+deepspeed==0.16.9
+peft
+transformers
+datasets
+accelerate
+bitsandbytes
+wandb
